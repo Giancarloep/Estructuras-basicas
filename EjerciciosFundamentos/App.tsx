@@ -16,6 +16,7 @@ export default function App() {
   const [inputName, setName] = useState("");
   const [inputEdad, setEdad] = useState("");
   const tareas = ["Tarea 1", "Tarea 2", "Tarea 3", "Tarea 4", "Tarea 5"];
+  const edadNum = parseInt(inputEdad);
   return (
     <View style={styles.container}>
       <CustomInput 
@@ -30,8 +31,9 @@ export default function App() {
       />
       <StatusBar style="auto" />
       <Text style={styles.texto}>
-        {saludo(inputName)}{"\n"}
-        {inputEdad? (parseInt(inputEdad) >= 18 ? "Mayor de edad" : "Menor de edad"): "Ingrese su edad"}
+        {inputName? saludo(inputName) : "Ingrese su nombre"}{"\n"}
+        {"Usted es:\n"}
+        {inputEdad.trim() ? (isNaN(edadNum) ? "Ingrese una edad válida" : (edadNum >= 18 ? "Mayor de edad" : "Menor de edad")) : "Ingrese su edad"}
       </Text>
       <Text style={styles.Titulos}>
         Tareas Pendientes
